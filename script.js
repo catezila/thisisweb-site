@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+    const sunIcon = document.getElementById('sun-icon');
 
     // Check for saved theme preference, default to dark
     const currentTheme = localStorage.getItem('theme') || 'dark';
     body.classList.add(`${currentTheme}-theme`);
 
-    themeToggle.addEventListener('click', () => {
+    const toggleTheme = () => {
         if (body.classList.contains('dark-theme')) {
-            body.classList.remove('dark-theme');
-            body.classList.add('light-theme');
+            body.classList.replace('dark-theme', 'light-theme');
             localStorage.setItem('theme', 'light');
         } else {
-            body.classList.remove('light-theme');
-            body.classList.add('dark-theme');
+            body.classList.replace('light-theme', 'dark-theme');
             localStorage.setItem('theme', 'dark');
         }
-    });
+    };
+
+    sunIcon.addEventListener('click', toggleTheme);
 });

@@ -26,79 +26,29 @@ header {
     padding: 2vw; /* Use viewport width for padding */
 }
 
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 6vw; /* Scaled with viewport width */
-    height: 3.4vw; /* Scaled with viewport width */
-    max-width: 108px; /* Max size to prevent it from getting too big */
-    max-height: 61.2px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The slider */
-.slider {
-    position: absolute;
+/* Theme Switcher Icons */
+.theme-switcher {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc; /* Light theme default */
-    -webkit-transition: .4s;
-    transition: .4s;
 }
 
-body.dark-theme .slider {
-    background-color: #555; /* Dark theme slider background */
+.theme-icon {
+    width: 3vw; /* Scaled with viewport width */
+    height: 3vw; /* Scaled with viewport width */
+    max-width: 50px; /* Max size */
+    max-height: 50px;
+    transition: fill 0.3s;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 2.6vw; /* Scaled with viewport width */
-    width: 2.6vw; /* Scaled with viewport width */
-    left: 0.4vw; /* Scaled with viewport width */
-    bottom: 0.4vw; /* Scaled with viewport width */
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-    max-height: 46.8px; /* Max size */
-    max-width: 46.8px;
-    left: 7.2px; /* Fallback for older browsers or if vw is too small */
-    bottom: 7.2px;
+/* Theme Icon */
+.theme-icon {
+    stroke: #1a1a1a; /* Dark color for light theme */
+    transition: stroke 0.3s;
 }
 
-input:checked + .slider {
-    background-color: #4169E1; /* Royal Blue for checked state */
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #4169E1;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(2.6vw); /* Scaled with viewport width */
-    -ms-transform: translateX(2.6vw);
-    transform: translateX(2.6vw);
-    transform: translateX(46.8px); /* Fallback */
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 3.4vw; /* Scaled with viewport width */
-    border-radius: 61.2px; /* Fallback */
-}
-
-.slider.round:before {
-    border-radius: 50%;
+body.dark-theme .theme-icon {
+    stroke: #f0f0f0; /* Light color for dark theme */
 }
 
 main {
@@ -108,6 +58,7 @@ main {
     flex-grow: 1; /* Allow main content to grow and push footer down */
     padding: 2vw;
     box-sizing: border-box;
+    margin-bottom: 20px; /* Space between main content and pixel cat animation */
 }
 
 .content-wrapper {
@@ -209,6 +160,44 @@ body.dark-theme .collection-button:hover {
     color: #1a1a1a;
 }
 
+/* Pixel Cat Animation */
+.pixel-cat-animation {
+    width: 48px; /* Adjusted to a common pixel art size */
+    height: 48px; /* Adjusted to a common pixel art size */
+    background-image: url('https://slimy-salmon-wasp.myfilebase.com/ipfs/QmdcEGJdpx49G6eQbc6QnvhqwgdB2VXHKLji3hqY67inzq');
+    background-size: contain; /* Ensure the whole GIF is visible */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px auto 10px auto; /* Adjusted margin: top, right, bottom, left */
+    animation: moveCat 10s linear infinite; /* Slower animation with continuous loop */
+    image-rendering: pixelated; /* Keep it pixelated */
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    transition: background-image 0.3s;
+}
+
+body.dark-theme .pixel-cat-animation {
+    background-image: url('https://slimy-salmon-wasp.myfilebase.com/ipfs/QmRSguWsxFJMTfdVrQ3BpZbFAhqpu5hx8MjeASNsGSh3QB');
+}
+
+@keyframes moveCat {
+    0% {
+        transform: translateX(-40vw) scaleX(1);
+    }
+    49% {
+        transform: translateX(40vw) scaleX(1);
+    }
+    50% {
+        transform: translateX(40vw) scaleX(-1);
+    }
+    99% {
+        transform: translateX(-40vw) scaleX(-1);
+    }
+    100% {
+        transform: translateX(-40vw) scaleX(1);
+    }
+}
+
 footer {
     text-align: center;
     padding: 2vw;
@@ -254,22 +243,6 @@ body.dark-theme footer hr {
         font-size: 3vw;
         padding: 3vw 6vw;
     }
-
-    .switch {
-        width: 15vw;
-        height: 8.5vw;
-    }
-
-    .slider:before {
-        height: 7vw;
-        width: 7vw;
-        left: 1vw;
-        bottom: 1vw;
-    }
-
-    input:checked + .slider:before {
-        transform: translateX(7vw);
-    }
 }
 
 @media (min-width: 1200px) {
@@ -293,21 +266,5 @@ body.dark-theme footer hr {
     .collection-button {
         font-size: 2.16em;
         padding: 27px 54px;
-    }
-
-    .switch {
-        width: 108px;
-        height: 61.2px;
-    }
-
-    .slider:before {
-        height: 46.8px;
-        width: 46.8px;
-        left: 7.2px;
-        bottom: 7.2px;
-    }
-
-    input:checked + .slider:before {
-        transform: translateX(46.8px);
     }
 }
