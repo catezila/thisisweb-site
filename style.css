@@ -1,0 +1,313 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Arrange children in a column */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+}
+
+/* Light Theme (default as per example) */
+body.light-theme {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end; /* Push theme switcher to the right */
+    padding: 2vw; /* Use viewport width for padding */
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6vw; /* Scaled with viewport width */
+    height: 3.4vw; /* Scaled with viewport width */
+    max-width: 108px; /* Max size to prevent it from getting too big */
+    max-height: 61.2px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Light theme default */
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+body.dark-theme .slider {
+    background-color: #555; /* Dark theme slider background */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 2.6vw; /* Scaled with viewport width */
+    width: 2.6vw; /* Scaled with viewport width */
+    left: 0.4vw; /* Scaled with viewport width */
+    bottom: 0.4vw; /* Scaled with viewport width */
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    max-height: 46.8px; /* Max size */
+    max-width: 46.8px;
+    left: 7.2px; /* Fallback for older browsers or if vw is too small */
+    bottom: 7.2px;
+}
+
+input:checked + .slider {
+    background-color: #4169E1; /* Royal Blue for checked state */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #4169E1;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(2.6vw); /* Scaled with viewport width */
+    -ms-transform: translateX(2.6vw);
+    transform: translateX(2.6vw);
+    transform: translateX(46.8px); /* Fallback */
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 3.4vw; /* Scaled with viewport width */
+    border-radius: 61.2px; /* Fallback */
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allow main content to grow and push footer down */
+    padding: 2vw;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4vw; /* Scaled with viewport width */
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 4vw; /* Scaled with viewport width */
+}
+
+.profile-photo-container {
+    width: 25vw; /* Increased size */
+    height: 25vw; /* Increased size */
+    max-width: 450px; /* Increased max size */
+    max-height: 450px;
+    border: 0.4vw solid #1a1a1a; /* Scaled with viewport width */
+    border-radius: 2vw; /* Scaled with viewport width */
+    overflow: hidden; /* Hide overflow for rounded corners */
+    transition: transform 0.3s ease-in-out; /* Added transition for smooth animation */
+}
+
+.profile-photo-container:hover {
+    transform: scale(1.05); /* Scale up by 5% on hover */
+}
+
+.profile-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
+body.dark-theme .profile-photo-container {
+    border-color: #f0f0f0; /* White border in dark theme */
+}
+
+.name-and-tagline {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    min-height: 25vw; /* Match height of photo placeholder */
+    max-height: 450px; /* Match max-height of photo placeholder */
+}
+
+.cat-meme-creator {
+    font-family: 'Oswald', sans-serif; /* Oswald font */
+    font-size: 0.75vw; /* 1.5vw / 2 */
+    margin-bottom: 0.5vw; /* Space between this and CATEZILA */
+    color: inherit; /* Inherit color from body */
+}
+
+.catezila-name {
+    font-family: 'Bebas Neue', sans-serif; /* Changed to Bebas Neue */
+    font-size: 7vw; /* Increased size */
+    color: #4169E1; /* Royal Blue */
+    margin: 0;
+    line-height: 0.9;
+}
+
+.xrp-tagline {
+    font-family: 'Oswald', sans-serif; /* Changed to Oswald */
+    font-size: 1.5vw; /* Increased size */
+    background-color: #4169E1; /* Royal Blue background */
+    color: #f0f0f0; /* White text */
+    padding: 0.7vw 1.4vw; /* Increased padding */
+    display: inline-block; /* To apply padding and background */
+    margin-top: 1.2vw; /* Increased margin */
+}
+
+.collection-button {
+    background: none;
+    border: 0.2vw solid #1a1a1a; /* Scaled with viewport width */
+    color: #1a1a1a;
+    padding: 1.5vw 3vw; /* Scaled with viewport width */
+    font-size: 1.2vw; /* Scaled with viewport width */
+    border-radius: 1vw; /* Scaled with viewport width */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none; /* Remove underline */
+}
+
+body.dark-theme .collection-button {
+    border-color: #f0f0f0; /* White border in dark theme */
+    color: #f0f0f0;
+}
+
+.collection-button:hover {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+body.dark-theme .collection-button:hover {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+footer {
+    text-align: center;
+    padding: 2vw;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer hr {
+    border: none;
+    border-top: 0.1vw solid #1a1a1a; /* Scaled with viewport width */
+    margin-bottom: 1vw; /* Scaled with viewport width */
+}
+
+body.dark-theme footer hr {
+    border-top-color: #f0f0f0; /* White line in dark theme */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cat-meme-creator {
+        font-size: 1.5vw; /* 3vw / 2 */
+    }
+
+    .catezila-name {
+        font-size: 10vw; /* Larger font for mobile */
+    }
+
+    .xrp-tagline {
+        font-size: 4vw; /* Larger font for mobile */
+    }
+
+    .profile-photo-container {
+        width: 50vw; /* Larger for mobile */
+        height: 50vw; /* Larger for mobile */
+    }
+
+    .collection-button {
+        font-size: 3vw;
+        padding: 3vw 6vw;
+    }
+
+    .switch {
+        width: 15vw;
+        height: 8.5vw;
+    }
+
+    .slider:before {
+        height: 7vw;
+        width: 7vw;
+        left: 1vw;
+        bottom: 1vw;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(7vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .profile-photo-container {
+        width: 450px; /* Fixed max size for very large screens */
+        height: 450px;
+    }
+
+    .cat-meme-creator {
+        font-size: 1.25em; /* 2.5em / 2 */
+    }
+
+    .catezila-name {
+        font-size: 10em; /* Fixed max size for very large screens */
+    }
+
+    .xrp-tagline {
+        font-size: 2.5em;
+    }
+
+    .collection-button {
+        font-size: 2.16em;
+        padding: 27px 54px;
+    }
+
+    .switch {
+        width: 108px;
+        height: 61.2px;
+    }
+
+    .slider:before {
+        height: 46.8px;
+        width: 46.8px;
+        left: 7.2px;
+        bottom: 7.2px;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(46.8px);
+    }
+}
