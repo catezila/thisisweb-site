@@ -268,3 +268,87 @@ body.dark-theme footer hr {
         padding: 27px 54px;
     }
 }
+
+/* Collections Section */
+#collections {
+    padding: 2vw;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#collections h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4vw;
+    color: inherit;
+    margin-bottom: 2vw;
+}
+
+.collections-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2vw;
+}
+
+.collection-card {
+    display: block;
+    width: 45%;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: inherit;
+}
+
+.collection-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.collection-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.collection-card h3 {
+    padding: 1vw;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5vw;
+    background-color: #4169E1;
+    color: #f0f0f0;
+}
+
+body.dark-theme .collection-card h3 {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+/* Responsive for Collections */
+@media (max-width: 768px) {
+    #collections h2 {
+        font-size: 6vw;
+    }
+
+    .collection-card {
+        width: 100%;
+        margin-bottom: 2vw;
+    }
+
+    .collection-card h3 {
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    #collections h2 {
+        font-size: 3em;
+    }
+
+    .collection-card h3 {
+        font-size: 1.5em;
+    }
+}
