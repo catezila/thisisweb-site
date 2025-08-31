@@ -102,47 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
     const isSmallMobile = window.innerWidth <= 480;
 
-    if (isMobile) {
-        // Reduce particle animations on mobile for better performance
-        const particles = document.querySelectorAll('.particle');
-        particles.forEach((particle, index) => {
-            if (isSmallMobile && index > 20) {
-                particle.style.display = 'none';
-            } else if (index > 25) {
-                particle.style.display = 'none';
-            }
-        });
-
-        // Optimize animations for mobile
-        document.documentElement.style.setProperty('--transition-normal', 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)');
-        document.documentElement.style.setProperty('--transition-slow', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)');
-    }
-
-    // Touch device improvements
-    if ('ontouchstart' in window) {
-        // Add touch feedback
-        const interactiveElements = document.querySelectorAll('.theme-switcher, .collection-card');
-
-        interactiveElements.forEach(el => {
-            el.addEventListener('touchstart', () => {
-                el.style.transform = 'scale(0.98)';
-            });
-
-            el.addEventListener('touchend', () => {
-                setTimeout(() => {
-                    el.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // Improve scrolling on iOS
-        document.addEventListener('touchmove', (e) => {
-            if (e.target.closest('.particle-bg')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-    }
-
     // Viewport height fix for mobile browsers
     const setVH = () => {
         const vh = window.innerHeight * 0.01;
@@ -174,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add loading states
     const addLoadingStates = () => {
         const interactiveElements = document.querySelectorAll('button, a, .theme-switcher');
+
         interactiveElements.forEach(el => {
             el.addEventListener('click', () => {
                 el.classList.add('loading');
